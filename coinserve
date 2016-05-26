@@ -47,6 +47,8 @@ while True:
 	client_connection, client_address = listen_socket.accept()
 	print ('connection recieved')
 	request = client_connection.recv(1024).decode()
+	if string(request.decode()) == "get_source_url":
+		client_connection.send("http://github.com/justyntemme/coinserve".encode())
 	if len(request) > 5:# check if request is initial connection request. All real requests should be longer than 5 
 		args = parser.parse_args(shlex.split(request))
 		# Use the cfetch API to get number based on arguments provided above
