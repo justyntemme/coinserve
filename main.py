@@ -34,6 +34,7 @@ while True:
 		args = parser.parse_args(shlex.split(request))
 		# Use the cfetch API to get number based on arguments provided above
 		data =('%.8f'%get_ticker(args.api).get_rate(args.src, args.dest, args.amount)).encode()
+		print(data)
 		client_connection.send(data) #send back the data
 
 client_connection.close()
