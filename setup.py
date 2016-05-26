@@ -8,17 +8,15 @@ setup(
 	name = 'coinserve',
 	version = version,
 	scripts = ['coinserve'],
-	packages = ['cfetch'],
 	
 	package_dir = {
 		'cfetch': 'cfetch'
 	},
 
-	install_requires = ['requests'],
+	install_requires = ['coinfetch'],
 
 	package_data = {
-		'': ['README'],
-		'cfetch': ['plugins/*.py']
+		'': ['README']
 	},
 	include_package_data=True,
 
