@@ -47,12 +47,12 @@ while True:
 	client_connection, client_address = listen_socket.accept()
 	print ('connection recieved')
 	request = client_connection.recv(1024).decode()
-	if string(request.decode()) == "get_source_url":
+	if str(request) == "get_source_url":
 		client_connection.send("http://github.com/justyntemme/cfetch".encode())
 	if len(request) > 5:# check if request is initial connection request. All real requests should be longer than 5 
 		args = parser.parse_args(shlex.split(request))
 		# Use the cfetch API to get number based on arguments provided above
-		data =('%.8f'%get_ticker(args.api).get_rate(args.src, args.dest, args.amount)).encode()
+		data =('%.8f'%get_ticker(args.api).get_rate(args.src, args.dest, args.amount) + "\n").encode()
 		print(data)
 		client_connection.send(data) #send back the data
 
